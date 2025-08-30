@@ -1,0 +1,9 @@
+const int micPin = A0;
+void setup() {
+  Serial.begin(9600);
+}
+void loop() {
+  int micValue = analogRead(micPin);
+  Serial.println(micValue); 
+  delay(200);
+}
