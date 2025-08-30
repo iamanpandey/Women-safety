@@ -1,0 +1,18 @@
+#include <Adafruit_Fingerprint.h>
+SoftwareSerial mySerial(2, 3);
+Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
+void setup() {
+  Serial.begin(9600);  
+  finger.begin(57600);
+}
+void loop() {
+  if (finger.getImage() == FINGERPRINT_OK) {
+    if (finger.image2Tz() == FINGERPRINT_OK) {
+      if (finger.fingerSearch() == FINGERPRINT_OK) {
+        Serial.println("Fingerprint Verified!");
+      } else {
+        Serial.println("Unknown Finger");
+      }
+    }
+  }
+}
