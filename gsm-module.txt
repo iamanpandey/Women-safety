@@ -1,0 +1,12 @@
+#include <SoftwareSerial.h>
+SoftwareSerial gsm(7, 8); 
+void setup() {
+  gsm.begin(9600);
+  delay(1000);
+  gsm.println("AT+CMGF=1"); delay(1000); 
+  gsm.println("AT+CMGS=\"+918881064437\""); 
+  delay(1000);
+  gsm.print("Help! Need assistance.");
+  gsm.write(26); 
+}
+void loop() {}
